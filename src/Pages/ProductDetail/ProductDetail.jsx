@@ -33,10 +33,10 @@ const ProductDetail = () => {
     
     <LayOut>
       {isLoading? (<Loader/>):(<ProductCard
-       product={product}
-       flex={true}
-       renderDesc={true}
-       renderAdd={true}
+       product={product} // This is the product data fetched from the API
+       flex={true}// This prop is used to determine the layout style of the ProductCard
+       renderDesc={true} // This prop indicates whether to render the product description
+       renderAdd={true} // This prop indicates whether to render the "add to cart" button
        />)}
       
     </LayOut>

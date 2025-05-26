@@ -28,32 +28,52 @@ const Results = () => {
   }, [categoryName])
   
   return (
-    
-    <LayOut> 
+    <LayOut>
       <section>
+        <h1
+          style={{
+            padding: "24px 0 8px 0",
+            fontSize: "2rem",
+            fontWeight: 700,
+            color: "#232f3e",
+            letterSpacing: "1px",
+            margin: 0,
+          }}
+        >
+          Results
+        </h1>
+        <p
+          style={{
+            padding: "0 0 16px 0",
+            fontSize: "1.1rem",
+            color: "#555",
+            fontStyle: "italic",
+            margin: 0,
+          }}
+        >
+          category/{categoryName}
+        </p>
+        <hr />
+
         
-        <h1 style={{padding:"30px"}}>Results</h1>
-        <p style={{padding:"30px"}}>category/{categoryName}</p>
-        <hr/>
 
-        {isLoading?(<Loader/>):(
-        // This code renders a list of product cards based on the results fetched from the API. Each product card is displayed with an option to add it to the cart.
+        {isLoading ? (
+          <Loader />
+        ) : (
+          // This code renders a list of product cards based on the results fetched from the API. Each product card is displayed with an option to add it to the cart.
           <div className={style.products_container}>
-          {results?.map((product)=>(
-            <ProductCard key={product.id}
-            product={product}
-            renderAdd={true}
-            />
-          ))}
-        </div>
-        )
-
-        }
+            {results?.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                renderAdd={true}
+              />
+            ))}
+          </div>
+        )}
       </section>
-      
-
     </LayOut>
-  )
+  );
 }
 
 export default Results

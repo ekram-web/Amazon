@@ -9,9 +9,19 @@ import { DataContext } from "../../Utility/DataProvider/DataProvider";
 
 const Header = () => {
   const [{ user, basket }, dispatch] = useContext(DataContext);
+  // is the same with
+  //const [state, dispatch] = useContext(DataContext);
+  // const { user, basket } = state; // destructuring state to get user and basket
+
+  // console.log(basket);
+  // console.log(basket.length); //how many different products are in the cart
+  //this does not consider the quantity of each item
+
   const totalItem = basket?.reduce((amount, item) => {
     return item.amount + amount;
   }, 0);
+
+  // console.log(totalItem); // how many total items are in the cart including quantity
 
   return (
     <section className={style.fixed}>
