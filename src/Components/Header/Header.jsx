@@ -51,7 +51,7 @@ const Header = () => {
               <option value="">All</option>
             </select>
             <input type="text" />
-            <BsSearch size={42} />
+            <BsSearch size={38} />
           </div>
 
           <div className={style.order_container}>
@@ -66,12 +66,22 @@ const Header = () => {
               </select>
             </Link>
 
-            <Link to="/auth">
+            {/* if user is not logged in, redirect to /auth */}
+            <Link to={!user && "/auth"}>
               <div>
-                <>
-                  <p>Hello</p>
-                  <span>Sign Out</span>
-                </>
+                {user ? (
+                  <>
+                {/* // if user is logged in, show their email and sign out option */}
+                    <p>Hello{user?.email?.split("@")[0]}</p>
+                    <span onClick={() => auth.signOut()}>Sign Out</span>
+                  </>
+                ) : (
+                  <>
+                  {/* // if user is not logged in, show "Hello, Sign In"  */}
+                    <span>Account & Lists</span>
+                    <p>Hello, Sign In</p>
+                  </>
+                )}
               </div>
             </Link>
 

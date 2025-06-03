@@ -4,6 +4,7 @@ export const initialState = {
   // Initial state of the application
 
   basket: [],
+  user: null, // 
   // An empty array to hold items in the basket
 };
 
@@ -18,8 +19,7 @@ export const reducer = (state, action) => {
       if (!existingItem) {
         // If the item does not exist in the basket, add it with an amount of 1
         return {
-          ...state // Spread the current state to keep other properties intact // copy the current state
-          ,
+          ...state, // Spread the current state to keep other properties intact // copy the current state
           basket: [...state.basket, { ...action.item, amount: 1 }],
         };
       } else {
@@ -76,6 +76,12 @@ export const reducer = (state, action) => {
         basket: [],
       };
 
+    case Type.SET_USER:
+      // this code 
+      return {
+        ...state,
+        user: action.user,
+      };
     // Default case to return the current state if no action matches
     default:
       return state;
